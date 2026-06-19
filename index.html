@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia Belgrano</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <img class="brand-mark" src="assets/belgrano-emblem.svg" alt="" aria-hidden="true" />
+          <div>
+            <p class="kicker" id="modeKicker">Versión aula</p>
+            <h1>Trivia Belgrano</h1>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <div class="mode-switch" role="tablist" aria-label="Cambiar versión">
+            <button class="mode-button is-active" type="button" role="tab" aria-selected="true" data-mode="classroom">
+              Aula
+            </button>
+            <button class="mode-button" type="button" role="tab" aria-selected="false" data-mode="final">
+              La gran final
+            </button>
+          </div>
+
+          <button class="icon-button" id="resetButton" type="button" title="Reiniciar partida" aria-label="Reiniciar partida">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4v6h6" />
+              <path d="M20 11a8 8 0 1 0-2.3 5.7" />
+            </svg>
+          </button>
+          <button class="icon-button" id="fullscreenButton" type="button" title="Pantalla completa" aria-label="Pantalla completa">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 3H3v5" />
+              <path d="M16 3h5v5" />
+              <path d="M21 16v5h-5" />
+              <path d="M3 16v5h5" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="play-surface">
+        <section class="score-row" aria-label="Puntajes">
+          <div class="scoreboard" id="scoreboard"></div>
+          <button class="add-team-button" id="addTeamButton" type="button">+ Equipo</button>
+        </section>
+
+        <section class="game-area" aria-label="Tablero de preguntas">
+          <div class="board-status">
+            <div>
+              <strong id="roundTitle">Versión aula</strong>
+              <span id="roundSubtitle">Ronda de participación</span>
+            </div>
+            <div class="remaining-pill">
+              <span id="remainingCount">0/0</span>
+            </div>
+          </div>
+
+          <div class="board-scroll">
+            <div class="game-board" id="gameBoard" aria-live="polite"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="question-dialog" id="questionDialog">
+      <form class="dialog-card" method="dialog">
+        <button class="close-button" type="submit" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+
+        <div class="question-meta">
+          <span id="dialogCategory">Categoría</span>
+          <strong id="dialogValue">100</strong>
+        </div>
+
+        <p class="dialog-question" id="dialogQuestion"></p>
+
+        <div class="answer-panel" id="answerPanel" hidden>
+          <span>Respuesta</span>
+          <p id="dialogAnswer"></p>
+        </div>
+
+        <div class="dialog-actions">
+          <button class="primary-action" id="revealButton" type="button">Ver respuesta</button>
+          <button class="score-action correct" id="correctButton" type="button" hidden>Correcta</button>
+          <button class="score-action wrong" id="wrongButton" type="button" hidden>Incorrecta</button>
+          <button class="ghost-action" id="skipButton" type="button" hidden>Sin puntuar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" hidden></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

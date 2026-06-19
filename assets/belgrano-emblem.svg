@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Emblema Belgrano">
+  <defs>
+    <linearGradient id="ribbon" x1="18" x2="102" y1="78" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#29b8d6"/>
+      <stop offset=".48" stop-color="#f9fdff"/>
+      <stop offset="1" stop-color="#29b8d6"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="43" x2="77" y1="43" y2="77" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd45f"/>
+      <stop offset="1" stop-color="#f2a318"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="54" fill="#fff" stroke="#0d7d82" stroke-width="6"/>
+  <path d="M20 72c18-18 36 14 54-4 10-10 17-21 26-22v17c-9 1-16 12-26 22-18 18-36-14-54 4V72Z" fill="url(#ribbon)"/>
+  <path d="M60 25 65 43 82 35 74 52 94 55 76 63 90 76 70 73 73 93 60 78 47 93 50 73 30 76 44 63 26 55 46 52 38 35 55 43 60 25Z" fill="url(#sun)"/>
+  <circle cx="60" cy="60" r="17" fill="#f6bf35"/>
+  <path d="M50 61c4 5 16 5 20 0" fill="none" stroke="#8a5d00" stroke-linecap="round" stroke-width="4"/>
+  <circle cx="53" cy="55" r="2.5" fill="#8a5d00"/>
+  <circle cx="67" cy="55" r="2.5" fill="#8a5d00"/>
+</svg>
