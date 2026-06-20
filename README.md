@@ -5,7 +5,7 @@ Jeopardy estático en HTML, CSS y JavaScript para proyectar en clase.
 ## Uso
 
 - `index.html` carga las preguntas desde `flashcards.csv`.
-- Hay dos vistas: `Aula` y `La gran final`.
+- Hay tres vistas: `1° a 3°`, `4° y 5°` y `Gran final`.
 - Los equipos se seleccionan haciendo click en su tarjeta.
 - Cada pregunta permite revelar respuesta y sumar, restar o marcar sin puntuar.
 - Los avances quedan guardados en el navegador con `localStorage`.

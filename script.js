@@ -4,7 +4,7 @@ const CATEGORY_COLORS = ["#087d82", "#e85f76", "#6d4fc2", "#35a56c", "#f2b735"];
 
 const GAME_CONFIG = {
   classroom: {
-    label: "Versión aula",
+    label: "1°, 2° y 3° año",
     subtitle: "Ronda de participación",
     values: [100, 200, 300, 400, 500],
     adjustStep: 100,
@@ -14,6 +14,19 @@ const GAME_CONFIG = {
       { name: "La bandera", color: "#29b8d6", indices: [10, 11, 12, 13, 31] },
       { name: "Campañas del norte", color: "#35a56c", indices: [14, 15, 16, 17, 18] },
       { name: "Vida ciudadana", color: "#f2b735", indices: [7, 9, 33, 34, 41] },
+    ],
+  },
+  upper: {
+    label: "4° y 5° año",
+    subtitle: "Ronda técnica basada en el documental",
+    values: [200, 400, 600, 800, 1000, 1200],
+    adjustStep: 200,
+    categories: [
+      { name: "Mundo colonial", color: "#087d82", indices: [55, 56, 57, 58, 59, 60] },
+      { name: "Formación intelectual", color: "#6d4fc2", indices: [61, 62, 63, 64, 65, 66] },
+      { name: "Consulado y reforma", color: "#f2b735", indices: [67, 68, 69, 70, 71, 72] },
+      { name: "Guerra y estrategia", color: "#35a56c", indices: [73, 74, 75, 76, 77, 78] },
+      { name: "Bandera y mando", color: "#e85f76", indices: [79, 80, 81, 82, 83, 84] },
     ],
   },
   final: {
@@ -97,7 +110,7 @@ function wireEvents() {
     const ok = window.confirm("¿Reiniciar puntajes y preguntas usadas?");
     if (!ok) return;
 
-    state.used = { classroom: {}, final: {} };
+    state.used = createEmptyUsedState();
     state.teams = state.teams.map((team) => ({ ...team, score: 0 }));
     saveState();
     renderAll();
@@ -428,7 +441,7 @@ function loadState() {
     mode: "classroom",
     teams: DEFAULT_TEAMS.map((team) => ({ ...team })),
     activeTeamId: DEFAULT_TEAMS[0].id,
-    used: { classroom: {}, final: {} },
+    used: createEmptyUsedState(),
   };
 
   try {
@@ -439,14 +452,21 @@ function loadState() {
       mode: GAME_CONFIG[stored.mode] ? stored.mode : fallback.mode,
       teams: Array.isArray(stored.teams) && stored.teams.length ? stored.teams : fallback.teams,
       activeTeamId: stored.activeTeamId || fallback.activeTeamId,
-      used: {
-        classroom: stored.used?.classroom || {},
-        final: stored.used?.final || {},
-      },
+      used: createUsedState(stored.used),
     };
   } catch {
     return fallback;
   }
+}
+
+function createEmptyUsedState() {
+  return Object.fromEntries(Object.keys(GAME_CONFIG).map((mode) => [mode, {}]));
+}
+
+function createUsedState(storedUsed = {}) {
+  return Object.fromEntries(
+    Object.keys(GAME_CONFIG).map((mode) => [mode, storedUsed?.[mode] || {}]),
+  );
 }
 
 function applyInitialModeFromUrl() {
