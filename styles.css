@@ -278,6 +278,29 @@ h1 {
   font-weight: 750;
 }
 
+.video-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 6px;
+  border: 1px solid color-mix(in srgb, var(--teal) 24%, transparent);
+  border-radius: 999px;
+  padding: 4px 9px;
+  color: var(--teal);
+  background: rgba(255, 255, 255, 0.68);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.video-link:hover {
+  background: #fff;
+  text-decoration: underline;
+}
+
+.video-link[hidden] {
+  display: none;
+}
+
 .remaining-pill {
   min-width: 82px;
   border: 1px solid var(--line);
@@ -363,6 +386,7 @@ h1 {
 .icon-button:focus-visible,
 .mode-button:focus-visible,
 .add-team-button:focus-visible,
+.video-link:focus-visible,
 .mini-button:focus-visible,
 .dialog-actions button:focus-visible,
 .close-button:focus-visible {

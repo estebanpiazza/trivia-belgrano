@@ -1,4 +1,5 @@
 const STORAGE_KEY = "trivia-belgrano-state-v1";
+const VIDEO_URL = "https://www.youtube.com/watch?v=4k56q4DVYLY";
 
 const CATEGORY_COLORS = ["#087d82", "#e85f76", "#6d4fc2", "#35a56c", "#f2b735"];
 
@@ -8,6 +9,7 @@ const GAME_CONFIG = {
     subtitle: "Ronda de participación",
     values: [100, 200, 300, 400, 500],
     adjustStep: 100,
+    videoUrl: VIDEO_URL,
     categories: [
       { name: "Primeros pasos", color: "#087d82", indices: [0, 1, 4, 42, 48] },
       { name: "Ideas y educación", color: "#e85f76", indices: [3, 5, 6, 32, 38] },
@@ -21,6 +23,7 @@ const GAME_CONFIG = {
     subtitle: "Ronda técnica basada en el documental",
     values: [200, 400, 600, 800, 1000, 1200],
     adjustStep: 200,
+    videoUrl: VIDEO_URL,
     categories: [
       { name: "Mundo colonial", color: "#087d82", indices: [55, 56, 57, 58, 59, 60] },
       { name: "Formación intelectual", color: "#6d4fc2", indices: [61, 62, 63, 64, 65, 66] },
@@ -61,6 +64,7 @@ const dom = {
   board: document.querySelector("#gameBoard"),
   roundTitle: document.querySelector("#roundTitle"),
   roundSubtitle: document.querySelector("#roundSubtitle"),
+  videoLink: document.querySelector("#videoLink"),
   remainingCount: document.querySelector("#remainingCount"),
   dialog: document.querySelector("#questionDialog"),
   dialogCategory: document.querySelector("#dialogCategory"),
@@ -250,6 +254,10 @@ function renderShell() {
   dom.modeKicker.textContent = config.label;
   dom.roundTitle.textContent = config.label;
   dom.roundSubtitle.textContent = config.subtitle;
+  dom.videoLink.hidden = !config.videoUrl;
+  if (config.videoUrl) {
+    dom.videoLink.href = config.videoUrl;
+  }
 
   dom.modeButtons.forEach((button) => {
     const isActive = button.dataset.mode === state.mode;
